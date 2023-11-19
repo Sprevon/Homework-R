@@ -13,3 +13,5 @@ plot(hc ,hang=-1, family='SimHei')
 # 输出
 result<-cutree(hc,k=3)
 print(result)
+
+# 结果图见 quiz/midterm/photo/Rplot02.png
