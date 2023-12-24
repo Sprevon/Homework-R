@@ -1,0 +1,60 @@
+{
+    "ModeOfPayment": {
+        "MoneyWallet": 0,
+        "CreditCard": 1,
+        "DebitCard": 2,
+        "Cash": 3,
+        "BankTransfer": 4,
+        "Voucher": 5,
+        "CashPoints": 6
+    },
+    "ResidentCity": {
+        "Madurai": 0,
+        "Kolkata": 1,
+        "Vijayawada": 2,
+        "Meerut": 3,
+        "Chennai": 4,
+        "Visakhapatnam": 5,
+        "Mumbai": 6,
+        "Delhi": 7,
+        "Patna": 8,
+        "Ghaziabad": 9,
+        "Dhanbad": 10,
+        "Aurangabad": 11,
+        "Thane": 12,
+        "Ahmedabad": 13,
+        "Hyderabad": 14,
+        "Amritsar": 15,
+        "Faridabad": 16,
+        "Nashik": 17,
+        "Indore": 18,
+        "Ludhiana": 19,
+        "Bangalore": 20,
+        "Lucknow": 21,
+        "Jaipur": 22,
+        "Bhopal": 23,
+        "Pune": 24,
+        "Nagpur": 25,
+        "Surat": 26,
+        "Srinagar": 27,
+        "Kanpur": 28,
+        "Vadodara": 29,
+        "Agra": 30,
+        "Rajkot": 31,
+        "Navi Mumbai": 32,
+        "Allahabad": 33,
+        "Coimbatore": 34,
+        "Varanasi": 35
+    },
+    "Channel": {
+        "Online": 0,
+        "Offline": 1
+    },
+    "CustomerPropensity": {
+        "Medium": 0,
+        "VeryHigh": 1,
+        "Unknown": 2,
+        "Low": 3,
+        "High": 4
+    }
+}
