@@ -29,6 +29,22 @@ model_multi_reg <- lm(ProductChoice~., data = data)
 summary(model_multi_reg)
 confint(model_multi_reg)
 predictions_multi_reg <- predict(model_multi_reg, newdata = test_data)
+# 使用ifelse函数进行转换
+arr_transformed <- ifelse(predictions_multi_reg >= 0.5 & predictions_multi_reg < 1.5, 1,
+                          ifelse(predictions_multi_reg >= 1.5 & predictions_multi_reg < 2.5, 2,
+                                 ifelse(predictions_multi_reg >= 2.5 & predictions_multi_reg < 3.5, 3,
+                                        ifelse(predictions_multi_reg >= 3.5 & predictions_multi_reg < 4.5, 4, NA))))
+t_multi_reg <- 0
+f_multi_reg <- 0
+for(i in seq_along(arr_transformed)){
+  if(arr_transformed[i] == test_label[i]){
+    t_multi_reg <- t_multi_reg + 1
+  }else{
+    f_multi_reg <- f_multi_reg + 1
+  }
+}
+acc_multi_reg <- t_multi_reg/(length(arr_transformed))
+sprintf("多元回归的准确度为：%f",acc_multi_reg)
 
 
 # 多元Logistic回归分析
@@ -46,23 +62,7 @@ for(i in seq_along(predictions_logi)){
   }
 }
 acc_logi <- t_logi/(length(predictions_logi))
-
-
-# 泊松分布
-model_poi <- glm(ProductChoice~., data = train_data, family = poisson(link = "log"))
-summary(model_poi)
-# 准确性分析
-predictions_poi <- predict(model_poi, newdata = test_data)
-t_poi <- 0
-f_poi <- 0
-for(i in seq_along(predictions_poi)){
-  if(predictions_poi[i] == test_label[i]){
-    t_poi <- t_poi + 1
-  }else{
-    f_poi <- f_poi + 1
-  }
-}
-acc_poi <- t_poi/(length(test_label))
+sprintf("多元逻辑斯蒂回归的准确度为：%f",acc_logi)
 
 
 
@@ -70,8 +70,6 @@ acc_poi <- t_poi/(length(test_label))
 scal<-preProcess(train_data,method=c("center","scale"))
 train_ds <- predict(scal,train_data)
 test_ds<- predict(scal,test_data)
-
-
 
 # 岭回归 / Lasso回归
 ProductChoice_index <- grep("ProductChoice", names(train_data))
